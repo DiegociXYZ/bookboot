@@ -1,3 +1,4 @@
+import sys
 from stats import dict_list 
 from stats import word_count
 from stats import char_count
@@ -12,7 +13,10 @@ def sort_on(dict):
 
 
 def main():
-    book_path = "books/frankenstein.txt"
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    book_path = sys.argv[1]
     book_text = get_book_text(book_path)
     word_num = word_count(book_text)
     sorted = dict_list(char_count(get_book_text(book_path)))
